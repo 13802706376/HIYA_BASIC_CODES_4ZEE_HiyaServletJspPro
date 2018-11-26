@@ -1,0 +1,48 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>HiyaServletJspPro</display-name>
+
+
+    <!-- 请求拦截器配置 开始   -->
+   <servlet>
+        <servlet-name>hiyaServelt1</servlet-name>
+        <servlet-class>com.hiya.ee.servlet.HiyaCommonServelt</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hiyaServelt1</servlet-name>
+        <url-pattern>/hiya</url-pattern>
+    </servlet-mapping>
+     <!-- 请求拦截器配置 结束   -->
+     
+     
+    <!-- 过滤器配置 开始   -->
+    <filter>
+         <filter-name>characterEncodingFilter</filter-name>
+         <filter-class>com.hiya.ee.filter.HiyaCharacterEncodingFilter</filter-class>
+         <init-param>
+                <param-name>encoding</param-name>
+                <param-value>UTF-8</param-value>
+          </init-param>
+    </filter>
+    <filter-mapping>
+          <filter-name>characterEncodingFilter</filter-name>
+          <url-pattern>/*</url-pattern>
+    </filter-mapping>
+   <!-- 过滤器配置 结束   -->
+ 
+ 
+     <!-- 监听器配置 开始   -->
+	 <listener>
+	    <listener-class>com.hiya.ee.listener.HiyaOnlinListener</listener-class>
+	</listener>
+     <!-- 监听器配置 结束   -->
+ 
+   <error-page>
+     <error-code>404</error-code>
+     <location>/common/404.jsp</location>
+   </error-page>
+
+</web-app>
